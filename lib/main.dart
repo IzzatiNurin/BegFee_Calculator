@@ -418,7 +418,7 @@ class _HomePageState extends State<HomePage> {
 class AboutPage extends StatelessWidget {
   const AboutPage({super.key});
 
-  static final Uri githubUrl = Uri.parse('https://github.com/');
+  static final Uri githubUrl = Uri.parse('https://github.com/IzzatiNurin/BegFee_Calculator.git');
 
 Future<void> openGitHub() async {
   if (!await launchUrl(
