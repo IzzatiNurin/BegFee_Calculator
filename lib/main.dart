@@ -707,7 +707,7 @@ Future<void> openGitHub() async {
                     SizedBox(height: 12),
                     Text('Matric No: 2025222766'),
                     SizedBox(height: 12),
-                    Text('Course: CS2515B'),
+                    Text('Course: CS251 - BACHELOR OF COMPUTER SCIENCE (HONS.) NETCENTRIC COMPUTING'),
                   ],
                 ),
               ),
