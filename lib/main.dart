@@ -3,31 +3,34 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 void main() {
-  runApp(const BagFeeApp());
+  runApp(const AeriqApp());
 }
 
-class BagFeeApp extends StatelessWidget {
-  const BagFeeApp({super.key});
+class AeriqApp extends StatelessWidget {
+  const AeriqApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'BagFee Calculator',
+      title: 'AERIQ',
+      
       theme: ThemeData(
         useMaterial3: true,
-        scaffoldBackgroundColor: const Color(0xFFFCEEF2),
+        scaffoldBackgroundColor: const Color(0xFF101824),
         colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color(0xFFD98CA5),
-          primary: const Color(0xFFD98CA5),
-          onPrimary: Colors.white,
+          seedColor: const Color(0xFF86CFFF),
+          primary: const Color(0xFF86CFFF),
+          onPrimary: const Color(0xFF101824),
+          surface: const Color(0xFF202F40),
         ),
         appBarTheme: const AppBarTheme(
-          backgroundColor: Color(0xFFF8DDE7),
-          foregroundColor: Color(0xFF704B5A),
+          backgroundColor: Color(0xFF101824),
+          foregroundColor: Color(0xFFDCE7F0),
           centerTitle: false,
         ),
       ),
+
       home: const HomePage(),
     );
   }
@@ -87,55 +90,92 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      
       // APP BAR
       appBar: AppBar(
-        title: const Text(
-          'BagFee 🎀',
-          style: TextStyle(fontWeight: FontWeight.bold),
+        title: const Row(
+          children: [
+            Icon(
+              Icons.flight_takeoff_rounded,
+              color: Color(0xFF86CFFF),
+            ),
+            SizedBox(width: 10),
+            Text(
+              'AERIQ',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                letterSpacing: 2,
+              ),
+            ),
+          ],
         ),
       ),
 
       // NAVIGATION DRAWER
       drawer: Drawer(
-        backgroundColor: const Color(0xFFFFF8F3),
+        backgroundColor: const Color(0xFF202F40),
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
-            const DrawerHeader(
-              decoration: BoxDecoration(
-                color: Color(0xFFF8DDE7),
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Icon(
-                    Icons.luggage_rounded,
-                    size: 45,
-                    color: Color(0xFFD98CA5),
-                  ),
-                  SizedBox(height: 10),
-                  Text(
-                    'BagFee 🎀',
-                    style: TextStyle(
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xFF704B5A),
-                    ),
-                  ),
-                ],
-              ),
+            
+          const DrawerHeader(
+            decoration: BoxDecoration(
+              color: Color(0xFF101824),
             ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Icon(
+                  Icons.flight_takeoff_rounded,
+                  size: 45,
+                  color: Color(0xFF86CFFF),
+                ),
+                SizedBox(height: 10),
+                Text(
+                  'AERIQ',
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    letterSpacing: 2,
+                    color: Color(0xFFDCE7F0),
+                  ),
+                ),
+                Text(
+                  'Travel smarter. Fly lighter.',
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: Color(0xFF8B9AAA),
+                  ),
+                ),
+              ],
+            ),
+          ),
+
+            
             ListTile(
-              leading: const Icon(Icons.home_outlined),
-              title: const Text('Home'),
+              leading: const Icon(
+                Icons.home_outlined,
+                color: Color(0xFF86CFFF),
+              ),
+              title: const Text(
+                'Home',
+                style: TextStyle(color: Color(0xFFDCE7F0)),
+              ),
               onTap: () {
                 Navigator.pop(context);
               },
             ),
+            
             ListTile(
-              leading: const Icon(Icons.info_outline),
-              title: const Text('About'),
+              leading: const Icon(
+                Icons.info_outline,
+                color: Color(0xFF86CFFF),
+              ),
+              title: const Text(
+                'About',
+                style: TextStyle(color: Color(0xFFDCE7F0)),
+              ),
               onTap: () {
                 Navigator.pop(context);
                 Navigator.push(
@@ -150,75 +190,119 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
 
+
       // HOME PAGE CONTENT
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            
+            // WELCOME SECTION
             const Text(
-              'Travel without surprises.',
+              'YOUR JOURNEY.\nYOUR WEIGHT.\nYOUR BUDGET.',
               style: TextStyle(
-                fontSize: 24,
+                fontSize: 27,
+                height: 1.3,
                 fontWeight: FontWeight.bold,
-                color: Color(0xFF704B5A),
+                letterSpacing: 1,
+                color: Color(0xFFDCE7F0),
               ),
             ),
-            const SizedBox(height: 8),
+            const SizedBox(height: 12),
             const Text(
-              'Calculate your excess baggage fee before you fly!',
+              'Travel smarter. Fly lighter.',
               style: TextStyle(
                 fontSize: 15,
-                color: Color(0xFF8C6B79),
-              ),
-            ),
-            const SizedBox(height: 25),
-
-            // BAGGAGE WEIGHT INPUT
-            const Text(
-              'Checked Baggage Weight (kg)',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                color: Color(0xFF704B5A),
+                color: Color(0xFF86CFFF),
+                fontWeight: FontWeight.w500,
               ),
             ),
             const SizedBox(height: 8),
+            const Text(
+              'Know your baggage cost before take-off.',
+              style: TextStyle(
+                fontSize: 13,
+                color: Color(0xFF8B9AAA),
+              ),
+            ),
+
+            const SizedBox(height: 25),
+
+            
+            // BAGGAGE WEIGHT INPUT
+            const Text(
+              'CHECKED BAGGAGE WEIGHT',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 13,
+                letterSpacing: 1,
+                color: Color(0xFFDCE7F0),
+              ),
+            ),
+            const SizedBox(height: 10),
             TextField(
               controller: weightController,
+              style: const TextStyle(
+                color: Color(0xFFDCE7F0),
+                fontSize: 16,
+              ),
               keyboardType: const TextInputType.numberWithOptions(
                 decimal: true,
               ),
               decoration: InputDecoration(
                 hintText: 'e.g. 25',
-                prefixIcon: const Icon(Icons.luggage),
+                hintStyle: const TextStyle(
+                  color: Color(0xFF8B9AAA),
+                ),
+                prefixIcon: const Icon(
+                  Icons.luggage_outlined,
+                  color: Color(0xFF86CFFF),
+                ),
+                suffixText: 'KG',
+                suffixStyle: const TextStyle(
+                  color: Color(0xFF86CFFF),
+                  fontWeight: FontWeight.bold,
+                ),
                 filled: true,
-                fillColor: const Color(0xFFFFF8F3),
+                fillColor: const Color(0xFF202F40),
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(15),
+                  borderRadius: BorderRadius.circular(12),
                   borderSide: BorderSide.none,
                 ),
               ),
             ),
 
+
             const SizedBox(height: 20),
 
+            
             // TICKET CLASS SELECTION
             const Text(
-              'Ticket Class',
+              'TRAVEL CLASS',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
-                color: Color(0xFF704B5A),
+                fontSize: 13,
+                letterSpacing: 1,
+                color: Color(0xFFDCE7F0),
               ),
             ),
-            const SizedBox(height: 8),
+            const SizedBox(height: 10),
             DropdownButtonFormField<String>(
               initialValue: selectedClass,
+              dropdownColor: const Color(0xFF202F40),
+              style: const TextStyle(
+                color: Color(0xFFDCE7F0),
+              ),
               decoration: InputDecoration(
-                prefixIcon: const Icon(Icons.airplane_ticket),
+                prefixIcon: const Icon(
+                  Icons.airplane_ticket_outlined,
+                  color: Color(0xFF86CFFF),
+                ),
                 filled: true,
-                fillColor: const Color(0xFFFFF8F3),
+                fillColor: const Color(0xFF202F40),
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(15),
+                  borderRadius: BorderRadius.circular(12),
                   borderSide: BorderSide.none,
                 ),
               ),
@@ -245,24 +329,35 @@ class _HomePageState extends State<HomePage> {
               },
             ),
 
+
             const SizedBox(height: 20),
 
+            
             // EXCESS BAGGAGE RATE INPUT
             const Text(
-              'Excess Baggage Rate (RM per kg)',
+              'EXCESS BAGGAGE RATE',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
-                color: Color(0xFF704B5A),
+                fontSize: 13,
+                letterSpacing: 1,
+                color: Color(0xFFDCE7F0),
               ),
             ),
-            const SizedBox(height: 8),
+            const SizedBox(height: 10),
             TextField(
               controller: rateController,
+              style: const TextStyle(
+                color: Color(0xFFDCE7F0),
+                fontSize: 16,
+              ),
               keyboardType: const TextInputType.numberWithOptions(
                 decimal: true,
               ),
               decoration: InputDecoration(
                 hintText: 'Enter airline rate, e.g. 15',
+                hintStyle: const TextStyle(
+                  color: Color(0xFF8B9AAA),
+                ),
                 prefixIcon: const Padding(
                   padding: EdgeInsets.only(left: 12, right: 8),
                   child: Row(
@@ -270,87 +365,109 @@ class _HomePageState extends State<HomePage> {
                     children: [
                       Icon(
                         Icons.payments_outlined,
-                        color: Color(0xFFD98CA5),
+                        color: Color(0xFF86CFFF),
                       ),
                       SizedBox(width: 6),
                       Text(
                         'RM',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          color: Color(0xFF704B5A),
+                          color: Color(0xFF86CFFF),
                         ),
                       ),
                     ],
                   ),
                 ),
                 filled: true,
-                fillColor: const Color(0xFFFFF8F3),
+                fillColor: const Color(0xFF202F40),
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(15),
+                  borderRadius: BorderRadius.circular(12),
                   borderSide: BorderSide.none,
                 ),
               ),
             ),
-
-            const SizedBox(height: 6),
+            const SizedBox(height: 8),
             const Text(
-              'Enter the amount charged by the airline for each extra kg.',
+              'Enter the airline charge for each additional kilogram.',
               style: TextStyle(
                 fontSize: 12,
-                color: Color(0xFF8C6B79),
+                color: Color(0xFF8B9AAA),
               ),
             ),
+
 
             const SizedBox(height: 25),
 
             // CALCULATE BUTTON
+           
             SizedBox(
               width: double.infinity,
-              height: 52,
+              height: 55,
               child: ElevatedButton.icon(
                 onPressed: calculateFee,
                 icon: const Icon(Icons.calculate_outlined),
                 label: const Text(
-                  'Calculate Fee',
+                  'CALCULATE FLIGHT COST',
                   style: TextStyle(
-                    fontSize: 16,
                     fontWeight: FontWeight.bold,
+                    letterSpacing: 1,
+                    fontSize: 14,
                   ),
                 ),
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFFD98CA5),
-                  foregroundColor: Colors.white,
+                  backgroundColor: const Color(0xFF86CFFF),
+                  foregroundColor: const Color(0xFF101824),
+                  elevation: 0,
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15),
+                    borderRadius: BorderRadius.circular(12),
                   ),
                 ),
               ),
             ),
 
+
             const SizedBox(height: 25),
 
+            
             // CALCULATION RESULTS
             if (totalPayable != null)
               Card(
-                color: const Color(0xFFFFF8F3),
+                color: const Color(0xFF202F40),
                 elevation: 0,
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20),
+                  borderRadius: BorderRadius.circular(16),
+                  side: const BorderSide(
+                    color: Color(0xFF34495E),
+                    width: 1,
+                  ),
                 ),
                 child: Padding(
                   padding: const EdgeInsets.all(20),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Text(
-                        'Your Fee Summary 🎀',
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          color: Color(0xFF704B5A),
-                        ),
+                      const Row(
+                        children: [
+                          Icon(
+                            Icons.receipt_long_outlined,
+                            color: Color(0xFF86CFFF),
+                          ),
+                          SizedBox(width: 10),
+                          Text(
+                            'FLIGHT COST SUMMARY',
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              letterSpacing: 1,
+                              color: Color(0xFFDCE7F0),
+                            ),
+                          ),
+                        ],
                       ),
-                      const Divider(height: 25),
+                      const Divider(
+                        height: 30,
+                        color: Color(0xFF43566A),
+                      ),
                       resultRow(
                         'Excess Baggage Weight',
                         '${excessWeight!.toStringAsFixed(2)} kg',
@@ -363,9 +480,12 @@ class _HomePageState extends State<HomePage> {
                         'Service Tax (8%)',
                         'RM ${serviceTax!.toStringAsFixed(2)}',
                       ),
-                      const Divider(height: 25),
+                      const Divider(
+                        height: 30,
+                        color: Color(0xFF43566A),
+                      ),
                       resultRow(
-                        'Total Amount Payable',
+                        'TOTAL AMOUNT PAYABLE',
                         'RM ${totalPayable!.toStringAsFixed(2)}',
                         isTotal: true,
                       ),
@@ -373,6 +493,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
               ),
+
           ],
         ),
       ),
@@ -380,45 +501,50 @@ class _HomePageState extends State<HomePage> {
   }
 
   // RESULT ROW WIDGET
-  Widget resultRow(
-    String label,
-    String value, {
-    bool isTotal = false,
-  }) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Expanded(
-            child: Text(
-              label,
-              style: TextStyle(
-                fontWeight: isTotal ? FontWeight.bold : FontWeight.normal,
-                color: const Color(0xFF704B5A),
-              ),
-            ),
-          ),
-          const SizedBox(width: 10),
-          Text(
-            value,
+  
+Widget resultRow(String label,
+ String value, 
+ {bool isTotal = false}) {
+  return Padding(
+    padding: const EdgeInsets.symmetric(vertical: 8),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Expanded(
+          child: Text(
+            label,
             style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: isTotal ? 17 : 14,
-              color: const Color(0xFFD98CA5),
+              fontSize: isTotal ? 14 : 13,
+              fontWeight: isTotal ? FontWeight.bold : FontWeight.normal,
+              color: isTotal
+                  ? const Color(0xFF86CFFF)
+                  : const Color(0xFFDCE7F0),
             ),
           ),
-        ],
-      ),
-    );
-  }
+        ),
+        const SizedBox(width: 12),
+        Text(
+          value,
+          style: TextStyle(
+            fontSize: isTotal ? 20 : 14,
+            fontWeight: FontWeight.bold,
+            color: isTotal
+                ? const Color(0xFF86CFFF)
+                : const Color(0xFFDCE7F0),
+          ),
+        ),
+      ],
+    ),
+  );
+}
+
 }
 
 // ABOUT PAGE
 class AboutPage extends StatelessWidget {
   const AboutPage({super.key});
 
-  static final Uri githubUrl = Uri.parse('https://github.com/IzzatiNurin/BegFee_Calculator.git');
+  static final Uri githubUrl = Uri.parse('https://github.com/IzzatiNurin/AERIQ-Baggage-Calculator');
 
 Future<void> openGitHub() async {
   if (!await launchUrl(
@@ -431,14 +557,86 @@ Future<void> openGitHub() async {
 
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'About BagFee',
+          'About',
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
       ),
-      body: SingleChildScrollView(
+
+  // NAVIGATION DRAWER
+  drawer: Drawer(
+    backgroundColor: const Color(0xFF202F40),
+    child: ListView(
+      padding: EdgeInsets.zero,
+      children: [
+        const DrawerHeader(
+          decoration: BoxDecoration(
+            color: Color(0xFF101824),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Icon(
+                Icons.flight_takeoff_rounded,
+                size: 45,
+                color: Color(0xFF86CFFF),
+              ),
+              SizedBox(height: 10),
+              Text(
+                'AERIQ',
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                  letterSpacing: 2,
+                  color: Color(0xFFDCE7F0),
+                ),
+              ),
+              Text(
+                'Travel smarter. Fly lighter.',
+                style: TextStyle(
+                  fontSize: 12,
+                  color: Color(0xFF8B9AAA),
+                ),
+              ),
+            ],
+          ),
+        ),
+        ListTile(
+          leading: const Icon(
+            Icons.home_outlined,
+            color: Color(0xFF86CFFF),
+          ),
+          title: const Text(
+            'Home',
+            style: TextStyle(color: Color(0xFFDCE7F0)),
+          ),
+          onTap: () {
+            Navigator.popUntil(context, (route) => route.isFirst);
+          },
+        ),
+        ListTile(
+          leading: const Icon(
+            Icons.info_outline,
+            color: Color(0xFF86CFFF),
+          ),
+          title: const Text(
+            'About',
+            style: TextStyle(color: Color(0xFFDCE7F0)),
+          ),
+          onTap: () {
+            Navigator.pop(context);
+          },
+        ),
+      ],
+    ),
+  ),
+
+  body: SingleChildScrollView(
+
         padding: const EdgeInsets.all(24),
         child: Column(
           children: [
@@ -448,33 +646,36 @@ Future<void> openGitHub() async {
             Container(
               padding: const EdgeInsets.all(25),
               decoration: BoxDecoration(
-                color: const Color(0xFFF8DDE7),
+                color: const Color(0xFF202F40),
                 borderRadius: BorderRadius.circular(25),
+                border:Border.all(
+                  color: const Color(0xFF34495E),
+                ),
               ),
               child: const Icon(
-                Icons.luggage_rounded,
+                Icons.flight_takeoff_rounded,
                 size: 75,
-                color: Color(0xFFD98CA5),
+                color: Color(0xFF86CFFF),
               ),
             ),
 
             const SizedBox(height: 20),
 
             const Text(
-              'BagFee Calculator 🎀',
+              'AERIQ',
               style: TextStyle(
                 fontSize: 23,
                 fontWeight: FontWeight.bold,
-                color: Color(0xFF704B5A),
+                color: Color(0xFF86CFFF),
               ),
             ),
 
             const SizedBox(height: 8),
 
             const Text(
-              'Travel without surprises.',
+              'Travel Smarter. Fly Lighter',
               style: TextStyle(
-                color: Color(0xFF8C6B79),
+                color: Color(0xFF86CFFF),
                 fontSize: 15,
               ),
             ),
@@ -520,7 +721,7 @@ Future<void> openGitHub() async {
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
-                color: Color(0xFF704B5A),
+                color: Color(0xFF86CFFF),
               ),
             ),
 
@@ -532,7 +733,7 @@ Future<void> openGitHub() async {
                 'Visit My GitHub Repository',
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  color: Color(0xFFD98CA5),
+                  color: Color(0xFF86CFFF),
                   decoration: TextDecoration.underline,
                   fontWeight: FontWeight.bold,
                 ),
@@ -542,11 +743,11 @@ Future<void> openGitHub() async {
             const SizedBox(height: 30),
 
             const Text(
-              '© 2026 BagFee Calculator. All rights reserved.',
+              '© 2026 AERIQ. All rights reserved.',
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 12,
-                color: Color(0xFF8C6B79),
+                color: Color(0xFF86CFFF),
               ),
             ),
           ],
