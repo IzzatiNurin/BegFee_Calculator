@@ -63,14 +63,23 @@ class _HomePageState extends State<HomePage> {
     final double? weight = double.tryParse(weightController.text);
     final double? rate = double.tryParse(rateController.text);
 
-    if (weight == null || rate == null || weight < 0 || rate < 0) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Please enter valid, non-negative numbers.'),
-        ),
-      );
-      return;
-    }
+      if (weight == null || rate == null || weight < 0 || rate < 0) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text('Please enter valid, non-negative numbers.'),
+      ),
+    );
+    return;
+  }
+
+  if (weight > 100) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text('Maximum baggage weight allowed is 100 kg.'),
+      ),
+    );
+    return;
+  }
 
     setState(() {
       excessWeight = (weight - baggageAllowance).clamp(0, double.infinity);
